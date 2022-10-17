@@ -1,3 +1,42 @@
+// =============== 박도준 작업 >> 두더지 올라오는거 ===============
+let preNum = 1;     // 이전 랜덤숫자
+
+function getTime() {
+    const now = new Date();	// 현재 날짜 및 시간
+    const sec = now.getSeconds();
+    const milSec = now.getMilliseconds();
+    const mil = milSec / 1000;
+    const time = sec + mil;
+    return time;
+}
+function printImg() {
+    let ranNum = Math.floor(Math.random() * 10);  // 랜덤 숫자 (0~9)
+    if (ranNum === 0) { // 랜덤숫자가 0이면
+        ranNum++;   // 0을 1로
+    }
+    const $item = document.querySelector('.item' + ranNum);
+    $item.style.display = 'block';
+    preNum = ranNum;
+    
+    setTimeout(() => {
+        hideImg();
+    }, 2000);
+}
+
+function hideImg() {
+    console.log(getTime());
+    const $item = document.querySelector('.item' + preNum);
+    $item.style.display = 'none';
+}
+
+(function () {
+    setInterval(() => {
+        printImg();
+    }, 3000);
+})();
+
+// ===========================================
+
 // upttime = 두더지가 올라온 시점의 현재시간
 // gradeSum 누적 점수
 // touchTime 내가 두더지를 눌렀을 때의 현재 시간
