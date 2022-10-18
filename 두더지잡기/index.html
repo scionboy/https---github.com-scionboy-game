@@ -1,54 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>두더지 게임</title>
+
+    <!-- reset.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
+    <!-- main.css -->
+    <link rel="stylesheet" href="./main.css">
+
+    <!-- font.css-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+
+
+    <!-- js 연결 -->
+    <!-- defer를 걸면 문서가 다 돌고나서 script가 실행됨 -->
+    <script src="app.js" defer></script>
 </head>
 
-
-<script src="app.js" defer></script>
-<style>
-    .wrap{
-        width: 1200px;
-        height: 700px;
-        border: 1px solid red;
-        overflow: hidden;
-    }
-
-    .do{
-        float: left;
-        width: 500px;
-        height: 400px;
-        text-align: center;
-        border: 1px solid blue ;
-    }
-    .dd{
-        height: 100%;
-        text-align: center;
-        border: 3px solid violet ;
-        display: flex;
-        justify-content: flex-end;
-    }
-</style>
 <body>
-
-    <div class = "wrap">
-        <div class="do">두더지
-            <button id = "btn">잡기</button>
-            <button id = "btn2">두더지 올라오기</button>
-            <button id = "btn3">초 테스트</button>
-            <button id = "time">타이머 테스트
-            </button>
-
-            
-
+    <div class="wrap">
+        
+        <div class="title">
+            <h1>두더지 게임</h1>
         </div>
-        <div class = "dd">
-            ㅇㅇ
+
+        <div class="point">
+            <span class="score"></span>
+            <p>점</p>
+        </div>
+
+        <div class="point">
+            <span class="timer"></span>
+            <p>초</p>
+        </div>
+
+        <button type="button" id="start">게임 시작</button>
+        <div class="main">
+            
+            <table>
+                <tr>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item1">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item2">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item3">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item4">
+                        <div class="hole"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item5">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item6">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item7">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item8">
+                        <div class="hole"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item9">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item10">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item11">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item12">
+                        <div class="hole"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item13">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item14">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item15">
+                        <div class="hole"></div>
+                    </td>
+                    <td>
+                        <img src="img/두더지.jpg" alt="두더지" class="item16">
+                        <div class="hole"></div>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
-    
 </body>
+
 </html>
