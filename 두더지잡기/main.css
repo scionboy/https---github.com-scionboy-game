@@ -1,0 +1,90 @@
+body {
+    background: #36c90e;
+}
+
+.wrap   {
+    display: block;
+    margin: 10px auto;
+    width: 50%;
+}
+
+.wrap .title h1 {
+    width: 50%;
+    float: left;
+    font-size: 50px;  
+    font-family: 'Black Han Sans', sans-serif;
+    margin-left: 25%;
+    text-align: center;
+    border: 2px solid #08ee33;
+    border-radius: 50px;
+    box-sizing: border-box;
+    padding: 10px;
+    background: greenyellow;
+    margin-bottom: 10px;
+    padding-top: 20px;
+}
+
+.wrap .point {
+    width: 50%;
+    margin-left: 25%;
+    float: left;
+    border: 2px solid #08ee33;
+    border-radius: 50px;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 40px;
+    background:  greenyellow;
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+
+.wrap .point span {
+    float: left;
+    width: 80%;
+    text-align: right;
+}
+
+.wrap .point p {
+    float: right;
+    width: 20%;
+}
+
+.wrap .main {
+    margin-top: 10px;
+    float: left;
+    width: 100%;
+    border: 2px solid #08ee33;
+    box-sizing: border-box;
+    border-radius: 30px;
+    height: 700px;
+    background: url(./img/잔디.jpg);
+    position: relative;
+}
+.wrap .main .main2 ul {
+   width: 100%;
+}
+
+.wrap .main .main2 ul li {
+    float: left;
+    width: 20%;
+    margin-left: 5%;
+}
+
+.wrap .main .main2 ul li .hole {
+    position: absolute;
+    width: 140px;
+    height: 50px;
+    border: 2px solid black;
+    box-sizing: border-box;
+    border-radius: 90%;
+    background: black;
+}
+
+.wrap .main .main2 ul li img {
+    width: 75%;
+    height: 150px;
+    position: relative;
+    top: 50px;
+    z-index: 1000;
+}
