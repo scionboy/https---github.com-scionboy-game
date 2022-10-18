@@ -1,5 +1,21 @@
-// =============== 박도준 작업 >> 두더지 올라오는거 ===============
 let preNum = 1;     // 이전 랜덤숫자
+let score = 0;  // 누적 점수
+
+// 두더지 잡는 이벤트
+const $img = document.querySelectorAll('img');
+for (let $images of [...$img]) {
+    $images.addEventListener('click', function () {
+        score += 100;
+        console.log("점수는 ", score);
+        printScore();
+    })
+}
+
+// 점수 출력
+function printScore() {
+    const $score = document.querySelector('.score');
+    $score.textContent = score;
+}
 
 function getTime() {
     const now = new Date();	// 현재 날짜 및 시간
@@ -9,6 +25,8 @@ function getTime() {
     const time = sec + mil;
     return time;
 }
+
+// 두더지 출력 이벤트
 function printImg() {
     let ranNum = Math.floor(Math.random() * 10);  // 랜덤 숫자 (0~9)
     if (ranNum === 0) { // 랜덤숫자가 0이면
@@ -17,23 +35,36 @@ function printImg() {
     const $item = document.querySelector('.item' + ranNum);
     $item.style.display = 'block';
     preNum = ranNum;
-    
+
     setTimeout(() => {
         hideImg();
-    }, 2000);
+    }, 1000);
 }
 
+// 두더지 숨김 이벤트
 function hideImg() {
     console.log(getTime());
     const $item = document.querySelector('.item' + preNum);
     $item.style.display = 'none';
 }
 
-(function () {
-    setInterval(() => {
-        printImg();
-    }, 3000);
-})();
+// 게임 시작 이벤트
+function startGame() {
+    if (confirm('게임 시작?')) {
+        let interval = setInterval(() => {
+            printImg();
+            if (score === 300) {
+                alert('라운드 클리어!');
+                clearInterval(interval);    // 반복 중단
+            }
+        }, 2000);
+    }
+}
+
+document.getElementById('start').addEventListener('click', function () {
+    startGame();
+})
+
 
 // ===========================================
 
