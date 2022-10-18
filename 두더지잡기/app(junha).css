@@ -72,19 +72,15 @@ body {
     height: 150px;
 }
 
-.wrap .main table tr td img {
-    width: 100%;
-}
-
 .wrap .main .hole {
     position: absolute;
-    width: 140px;
+    width: 25%;
     height: 50px;
     border: 2px solid black;
     box-sizing: border-box;
     border-radius: 90%;
     background: black;
-    margin: auto;
+    margin-top: 90px;
 }
 
 /* .wrap .main .main2 ul {
@@ -125,6 +121,10 @@ img.item15,
 img.item16
 {
     display: none;
-    z-index: 1000;
+    width: 100%;
     float: left;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1000;
 }
