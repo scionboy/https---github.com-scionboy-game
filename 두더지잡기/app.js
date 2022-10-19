@@ -66,8 +66,8 @@ function hideImg() {
 
 // 게임 시작 이벤트
 function startGame() {
+    levelScale();
     if (confirm('게임 시작?')) {
-        gradeSum=0;
         time=4;
         inter_val();
         let interval = setInterval(() => {
@@ -76,8 +76,9 @@ function startGame() {
             if(time==0){
                 winCheck();
                 clearInterval(interval);    // 반복 중단
-                timer_stop();
+                
             }
+
         }, 2000);
     }
 }
@@ -93,9 +94,13 @@ function winCheck(){
         if(confirm("다음라운드 가시겠습니까")){
             gradeSum=0;
             printScore();
-            time=4;
-            inter_val();
+
+            // 다음레벨로 바꾸기();
+            
+            
+
             startGame();
+            
         }
     }else{
         alert("타임아웃!");
@@ -141,7 +146,7 @@ function timeout() {
     // 화면에 타이머 출력
     time -= 1;
     document.querySelector(".timer").textContent = time;
-    if (time < 1)
+    if (time == 0)
         timer_stop();
 }
 
@@ -150,3 +155,53 @@ function timer_stop() {
     clearInterval(timerId);
 
 }
+
+// 내용은 레벨 변수 level 넣고 2레벨일때 테이블 행,열 1칸식 증가, 3레벨일땐 2칸증가 이런식
+var level=1;
+var num=1;
+
+function levelScale(){    
+
+var main=document.querySelector(".main");
+    main.insertAdjacentHTML("afterbegin","<table>");
+    
+    for(var i=0; i<4; i++){
+  
+        main.insertAdjacentHTML("afterbegin","<tr>");
+
+        for(var j=0; j<4; j++){
+            
+       
+            main.insertAdjacentHTML("afterbegin","<td>");
+            main.insertAdjacentHTML("afterbegin","<img src=\"img/두더지.jpg\" alt = \"두더지\" class=\"item\""+num+"><div class='hole'></div>");
+            num++;
+            main.insertAdjacentHTML("afterbegin","</td>");
+        }
+        main.insertAdjacentHTML("afterbegin","</tr>");
+    }
+    main.insertAdjacentHTML("beforeend","</table>");
+    // 현재 포지션 이슈
+}
+
+/*
+<table>
+    <tr>
+        <td>
+            <img src="img/두더지.jpg" alt="두더지" class="item1">
+            <div class="hole"></div>
+        </td>
+        <td>
+            <img src="img/두더지.jpg" alt="두더지" class="item2">
+            <div class="hole"></div>
+        </td>
+        <td>
+            <img src="img/두더지.jpg" alt="두더지" class="item3">
+            <div class="hole"></div>
+        </td>
+        <td class="last_td">
+            <img src="img/두더지.jpg" alt="두더지" class="item4">
+            <div class="hole"></div>
+        </td>
+    </tr>
+</table>
+*/
