@@ -6,6 +6,7 @@ const $img = document.querySelectorAll('img');
 for (let $images of [...$img]) {
     $images.addEventListener('click', function () {
         touch();
+        hideImg();
         console.log("점수는 ", gradeSum);
         printScore();
     })
@@ -64,17 +65,6 @@ function startGame() {
                 clearInterval(interval);    // 반복 중단
                 timer_stop();
             }
-
-            // if (gradeSum >= 300) {
-            //     alert('라운드 클리어!');
-            //     clearInterval(interval);    // 반복 중단
-            //     timer_stop();
-            // }else if(gradeSum<300 && time==0){
-            //     alert("타임아웃");
-            //     clearInterval(interval);    // 반복 중단
-            //     timer_stop();
-            // }
-
         }, 2000);
     }
 }
@@ -152,19 +142,5 @@ function timeout() {
 // 타이머 끝
 function timer_stop() {
     clearInterval(timerId);
-
-    // if(gradeSum>점수){
-    //     if(confirm("다음 레벨로 진행하시겠습니까?")){
-    //         gradeSum=0;
-    //         time=60;
-
-
-
-    //     }else{
-    //         alert("게임 종료");
-
-    //     }
-    // }
-
 
 }
