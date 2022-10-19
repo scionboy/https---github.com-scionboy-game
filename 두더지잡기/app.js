@@ -1,6 +1,17 @@
 let preNum = 1;     // 이전 랜덤숫자
 let score = 0;  // 누적 점수
 
+// gradeSum : 누적 점수
+// ttime = 두더지 올라온 시점의 현재 시간
+
+var gradeSum = 0;
+var ttime = 0;
+
+// 타이머 설정
+var timerId; // 타이머 끄는 변수
+var time = 4; // 타이머 몇초로 할지
+
+
 // 두더지 잡는 이벤트
 const $img = document.querySelectorAll('img');
 for (let $images of [...$img]) {
@@ -28,7 +39,7 @@ function getTime() {
 }
 
 // 두더지 출력 이벤트
-var ttime = 0;
+
 function printImg() {
     let ranNum = Math.floor(Math.random() * 10);  // 랜덤 숫자 (0~9)
     if (ranNum === 0) { // 랜덤숫자가 0이면
@@ -56,6 +67,8 @@ function hideImg() {
 // 게임 시작 이벤트
 function startGame() {
     if (confirm('게임 시작?')) {
+        gradeSum=0;
+        time=4;
         inter_val();
         let interval = setInterval(() => {
             printImg();
@@ -75,29 +88,29 @@ document.getElementById('start').addEventListener('click', function () {
 
 // ===========================================
 function winCheck(){
-    if(gradeSum>=300){
+    if(gradeSum>=20){
         alert("라운드 클리어!");
+        if(confirm("다음라운드 가시겠습니까")){
+            gradeSum=0;
+            printScore();
+            time=4;
+            inter_val();
+            startGame();
+        }
     }else{
         alert("타임아웃!");
     }
 }
 
-
-// upttime = 두더지가 올라온 시점의 현재시간
-// gradeSum 누적 점수
-// touchTime 내가 두더지를 눌렀을 때의 현재 시간
-
-var upttime = 0;
-var gradeSum = 0;
-
 function touch() {
-
+    
     // 내가 누를때 시간
     var d = new Date();
-
+    
     touchSeconds = d.getSeconds();
     touchMilli = d.getMilliseconds();
     touchMil = touchMilli / 1000;
+    // touchTime 내가 두더지를 눌렀을 때의 현재 시간
     touchTime = touchSeconds + touchMil; // 1000 밀리 = 1초 
 
     // 점수 체크하기, 내가 누른 시간 - 두더지 올라온 시간
@@ -105,25 +118,18 @@ function touch() {
 
     if (check > 0 && check <= 0.35) {
         gradeSum += 100;
-        var grade = 100;
+        
     } else if (check > 0.35 && check <= 0.7) {
         gradeSum += 70;
-        var grade = 70;
     } else if (check > 0.7 && check <= 1) {
         gradeSum += 50;
-        var grade = 50;
     } else {
         gradeSum += 0;
-        var grade = 0;
     }
 
-    return gradeSum;
 }
 
 
-var timerId;
-// 60초 타이머
-var time = 10;
 
 // 1초마다 timout()을 실행함
 function inter_val() {
@@ -135,7 +141,7 @@ function timeout() {
     // 화면에 타이머 출력
     time -= 1;
     document.querySelector(".timer").textContent = time;
-    if (time == 0)
+    if (time < 1)
         timer_stop();
 }
 
