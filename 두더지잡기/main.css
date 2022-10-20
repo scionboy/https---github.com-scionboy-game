@@ -1,5 +1,6 @@
 body {
     background: #36c90e;
+    z-index: -3;
 }
 
 .wrap {

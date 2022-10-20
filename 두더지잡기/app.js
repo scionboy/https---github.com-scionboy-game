@@ -4,6 +4,8 @@ let hideSec = 2000; // 두더지 나왔다가 들어갈때까지의 시간
 let showSec = 3000; // 두더지 들어갔다가 나올때까지의 시간
 let round = 1;  // 라운드 누적 변수
 
+let wingrade=10; // 다음라운드 점수
+
 // gradeSum : 누적 점수
 // ttime = 두더지 올라온 시점의 현재 시간
 
@@ -23,18 +25,6 @@ $map.addEventListener('click', function (e) {
     console.log("점수는 ", gradeSum);
     printScore();
 });
-
-
-// 두더지 잡는 이벤트
-const $img = document.querySelectorAll('img');
-for (let $images of [...$img]) {
-    $images.addEventListener('click', function () {
-        touch();
-        hideImg();
-        console.log("점수는 ", gradeSum);
-        printScore();
-    })
-}
 
 // 점수 출력
 function printScore() {
@@ -84,7 +74,7 @@ function startGame(hideSecP, showSecP) {
         inter_val();
         let interval = setInterval(() => {
             printImg(hideSecP);
-            if (time == 0) {
+            if (time == 0 || gradeSum>=wingrade) {
                 winCheck();
                 clearInterval(interval);    // 반복 중단
             }
@@ -97,8 +87,10 @@ document.getElementById('start').addEventListener('click', function () {
 
 let num = 17;    // img의 class를 증가시킬 변수
 // 새 행, 열 추가
+var rowlevel=4;
 function nextRound() {
     round++;
+    
     if (round==2) {
         hideSec=1000;
         showSec=1500;
@@ -108,17 +100,21 @@ function nextRound() {
     }
     startGame(hideSec, showSec);
     const $map = document.querySelector('.map');
-
+    
     // 행 추가
     const newRow = $map.insertRow();
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < rowlevel; i++) {
+        var firstRow = document.querySelector('.map').rows[i];
+        var x = firstRow.insertCell(i);
+        x.innerHTML='<img src="img/두더지.jpg" alt="두더지" class="item' + num + '"><div class="hole"></div>';
         const newCell = newRow.insertCell(i);
         newCell.innerHTML = '<img src="img/두더지.jpg" alt="두더지" class="item' + num + '"><div class="hole"></div>';
         num++;
     }
-    // // 열 추가
-    // for (let i = 0; i < $map.rows.length; i++) {
-    //     const newCell = $map.rows[i].insertCell(-1);   // -1 => 맨 뒤에 추가
+    // 열 추가
+    // const newCell2=$map.insertCell();;
+    // for (let i = 0; i < rowlevel; i++) {
+    //     const newRow2 = newCell2.insertRow(i);
     //     newCell.innerHTML = '<img src="img/두더지.jpg" alt="두더지" class="item' + num + '"><div class="hole"></div>';
     //     num++;
     // }
@@ -133,6 +129,7 @@ function winCheck() {
         if (confirm("다음라운드 가시겠습니까")) {
             gradeSum = 0;
             printScore();
+            rowlevel++;
             nextRound();  // 새 행, 시간 단축
         } 
     } else {
