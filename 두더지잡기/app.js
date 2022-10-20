@@ -6,6 +6,8 @@ let round = 1;  // 라운드 누적 변수
 
 let wingrade=10; // 다음라운드 점수
 
+let round_test=4;
+
 // gradeSum : 누적 점수
 // ttime = 두더지 올라온 시점의 현재 시간
 
@@ -43,7 +45,7 @@ function getTime() {
 
 // 두더지 출력 이벤트
 function printImg(hideSecP) {
-    let ranNum = Math.floor(Math.random() * 10);  // 랜덤 숫자 (0~9)
+    let ranNum = Math.floor(Math.random() * (round_test*round_test));  // 랜덤 숫자 (0~9)
     if (ranNum === 0) { // 랜덤숫자가 0이면
         ranNum++;   // 0을 1로
     }
@@ -111,13 +113,6 @@ function nextRound() {
         newCell.innerHTML = '<img src="img/두더지.jpg" alt="두더지" class="item' + num + '"><div class="hole"></div>';
         num++;
     }
-    // 열 추가
-    // const newCell2=$map.insertCell();;
-    // for (let i = 0; i < rowlevel; i++) {
-    //     const newRow2 = newCell2.insertRow(i);
-    //     newCell.innerHTML = '<img src="img/두더지.jpg" alt="두더지" class="item' + num + '"><div class="hole"></div>';
-    //     num++;
-    // }
 
 }
 
@@ -128,6 +123,7 @@ function winCheck() {
         alert("라운드 클리어!");
         if (confirm("다음라운드 가시겠습니까")) {
             gradeSum = 0;
+            round_test++;
             printScore();
             rowlevel++;
             nextRound();  // 새 행, 시간 단축
@@ -172,8 +168,9 @@ function timeout() {
     // 화면에 타이머 출력
     time -= 1;
     document.querySelector(".timer").textContent = time;
-    if (time == 0)
+    if (time == 0 || gradeSum>=wingrade)
         timer_stop();
+    
 }
 
 // 타이머 끝
