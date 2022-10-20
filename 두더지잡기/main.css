@@ -72,6 +72,25 @@ body {
     height: 150px;
 }
 
+
+/* .wrap .main .main2 ul {
+    width: 100%;
+}
+.wrap .main .main2 ul li {
+    float: left;
+    width: 20%;
+    margin-left: 5%;
+}
+*/
+
+/* .wrap .main .main2 ul li img {
+    width: 75%;
+    height: 150px;
+    position: relative;
+    top: 50px;
+    z-index: 1000;
+} */
+
 .wrap .main .hole {
     position: absolute;
     width: 25%;
@@ -82,29 +101,11 @@ body {
     background: black;
     margin-top: 90px;
 }
-
-/* .wrap .main .main2 ul {
-    width: 100%;
-}
-.wrap .main .main2 ul li {
-    float: left;
-    width: 20%;
-    margin-left: 5%;
-}
- */
-
-/* .wrap .main .main2 ul li img {
-    width: 75%;
-    height: 150px;
-    position: relative;
-    top: 50px;
-    z-index: 1000;
-} */
-
 .wrap .main img
 {
     display: none;
     width: 100%;
+    height: 150px;
     float: left;
     position: relative;
     left: 0;
